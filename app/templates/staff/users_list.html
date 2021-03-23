@@ -1,0 +1,46 @@
+{% extends 'staff/base.html' %}
+{% block title %} فروشگاه | لیست کاربران{% endblock %}
+{% block head %} لیست کاربران {% endblock %}
+
+{% block main %}
+    <div class="card">
+        <div class="card-header">
+        <h3 class="card-title">لیست کاربران</h3>
+        </div>
+        <div class="card-body">
+            <div class="col-sm-12">
+                <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" style="width: 201px;" aria-sort="ascending">نام و نام خانوداگی</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 261px;">نام کاربری</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 244.2px;">ایمیل</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 169px;">شماره موبایل</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 122px;">آدرس</th></tr>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 122px;">وضعیت فعالیت</th></tr>
+                    </thead>
+                    <tbody> 
+                        {% for user in users %} 
+                        <tr role="row" class="odd">
+                        <td class="sorting_1">
+                            {{user.profile.first_name | default_if_none:"پروفایل کامل نیست" }} {{user.profile.last_name|default_if_none:"پروفایل کامل نیست"}}
+                        </td>
+                        <td><a href="/staff/users/{{user.username}}">{{user.username}}</a></td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.profile.phone_number}}</td>
+                        <td>{{user.profile.location}}</td>
+                        <td>
+                            {% if user.is_active is True %}
+                            فعال
+                            {% else %}
+                            غیرفعال
+                            {% endif %}
+                        </td>
+                        </tr>
+                        {% endfor %}   
+                    </tbody>
+                </table>    
+            </div>
+        </div>
+    </div>
+{% endblock %}

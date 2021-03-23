@@ -1,0 +1,12 @@
+{% extends 'staff/base.html' %}
+{% block title %} فروشگاه | پنل مدیریت {% endblock %}
+{% block head %} پنل مدیریت {% endblock %}
+{% block main %}
+خوش آمدید {{username.profile.first_name}} {{username.profile.last_name}}
+
+<p>تعداد سفارشات نهایی شده :{{orders_count}}</p>
+<p>تعداد سفارشات در حال انجام :{{confirmed_orders_count}}</p>
+<p>تعداد کاربران :{{users_count}}</p>
+<p>تعداد کاربران فعال : {{active_users_count}}</p>
+
+{% endblock %}

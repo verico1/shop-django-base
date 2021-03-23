@@ -1,0 +1,73 @@
+<html>
+  {% extends "base.html" %}
+  {% load static %}
+  <head>
+    
+      {% block title %}
+      ثبت نام  | {{ block.super }}
+      {% endblock title %}
+      
+  </head>
+
+  {% block content %}
+  <link rel="stylesheet"  href="{% static 'css/register.css' %}">
+  <body>
+    
+<div class="signup_main">
+      <section class="signup">
+          <div class="singup_form">
+              <div class="signup-content">
+                  <div class="signup-form">
+                        {% if message_good %}
+                        <h4 class="msg_good msg">{{message_good}}</h4>
+                        {% else %}
+                        {% endif %}
+                        {% if message_bad %}
+                        <h4 class="msg_bad msg">{{message_bad}}</h4>
+                        {% else %}
+                        {% endif %}
+                      <h2 class="form-title">ثبت نام</h2>
+                      <form method="POST" class="register-form" id="register-form">
+                        {% csrf_token %}
+                          <div class="form-group">
+                              <label for="name"><i class="fa fa-user" aria-hidden="true"></i></label>
+                              <input type="text" name="username" id="name" placeholder="نام کاربری" required/>
+                          </div>
+                          <div class="form-group">
+                              <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i></label>
+                              <input type="email" name="email" id="email" placeholder="ایمیل" required/>
+                          </div>
+                          <div class="form-group">
+                              <label for="pass"><i class="fa fa-key" aria-hidden="true"></i></label>
+                              <input type="password" name="password" id="pass" placeholder="رمز عبور" required/>
+                          </div>
+                          <div class="form-group">
+                              <label for="re-pass"><i class="fa fa-key" aria-hidden="true"></i></label>
+                              <input type="password" name="password1" id="re_pass" placeholder="تکرار رمز عبور" required/>
+                          </div>
+                           <script src='https://www.google.com/recaptcha/api.js'></script>
+                           <div class="g-recaptcha" data-sitekey="6LfZDhoaAAAAANnPAbVTa4LaKyxl8ycq8wOi8kFw"></div>
+                          <br>
+                          <div class="form-group">
+                              <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" required/>
+                              <label for="agree-term" class="label-agree-term"><span><span></span></span> من با تمام اظهارات، <a href="#" class="term-service">شرایط و خدمات</a> موافقم</label>
+                          </div>
+                          <div class="form-group form-button">
+                              <input type="submit" name="signup" id="signup" class="form-submit" value="ثبت نام"/>
+                          </div>
+                          
+                      </form>
+                  </div>
+                  <div class="signup-image">
+                      <figure><img src="{% static 'images/logo.png' %}" alt="sing up image"></figure>
+                      <a href="/account/login" class="signup-image-link">قبلا عضو شده ام</a>
+                  </div>
+              </div>
+          </div>
+      </section>
+    </div>
+  </body>
+  {% endblock %}
+</html>
+
+

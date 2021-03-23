@@ -1,0 +1,36 @@
+{% extends 'staff/base.html' %}
+{% block title %} فروشگاه | لیست سفارشات{% endblock %}
+{% block head %} لیست سفارشات{% endblock %}
+
+{% block main %}
+    <div class="card">
+        <div class="card-header">
+        <h3 class="card-title">لیست سفارشات</h3>
+        </div>
+        <div class="card-body">
+            <div class="col-sm-12">
+                <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 261px;">نام کاربری</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 244.2px;">شماره سفارش</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 169px;">تاریخ سفارش</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 122px;">وضعیت سفارش</th></tr>
+                    </thead>
+                    <tbody> 
+                        {% for order in orders %} 
+                        <tr role="row" class="odd">
+                        <td class="sorting_1">
+                            <a href="/staff/users/{{order.owner.user}}">{{order.owner.user}}</a>
+                        </td>
+                        <td><a href="/staff/order_detail/{{order.ref_code}}">{{order.ref_code}}</a></td>
+                        <td>{{order.date_ordered}}|{{order.created_on_time|date:"G:i"}}</td>
+                        <td>{% if order.is_ordered is True %}پرداخت شد{% else %}در انتظار پرداخت{% endif %}</td>
+                        </tr>
+                        {% endfor %}   
+                    </tbody>
+                </table>    
+            </div>
+        </div>
+    </div>
+{% endblock %}

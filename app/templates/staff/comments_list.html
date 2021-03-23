@@ -1,0 +1,44 @@
+{% extends 'staff/base.html' %}
+{% block title %} فروشگاه | نظر کاربران{% endblock %}
+{% block head %} نظر کاربران {% endblock %}
+
+{% block main %}
+    نظر کاربران
+    <div class="card">
+        <div class="card-header">
+        <h3 class="card-title">لیست نظرات کاربران</h3>
+        </div>
+        <div class="card-body">
+            <div class="col-sm-12">
+                <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" style="width: 201px;" aria-sort="ascending">نام و نام خانوادگی</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 261px;">نام کاربری</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 244.2px;">ایمیل</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 169px;">متن نظر</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 122px;">وضعیت نمایش نظر</th></tr>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 122px;">محصول</th></tr>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 122px;">تاریخ</th></tr>
+                    </thead>
+                    <tbody> 
+                        {% for comment in comments %} 
+                        <tr role="row" class="odd">
+                        <td class="sorting_1">{{comment.user.profile.first_name}} {{comment.user.profile.last_name}}</td>
+                        <td>{{comment.user}}</td>
+                        <td>{{comment.user.email}}</td>
+                        <td>{{comment.body|truncatewords:"30"}}</td>
+                        <td>
+                            {% if comment.active is True %}درحال نمایش
+                            {% else %}در انتظار برسی... {% endif %}
+                        </td> 
+                        <td>{{comment.created_on}}|{{comment.created_on_time|date:"G:i"}}</td>      
+                        <td><a href="/products/{{comment.product.product_category|lower}}/{{comment.product.product_url}}">{{comment.product.product_model}}</a></td>
+                        </tr>
+                        {% endfor %}   
+                    </tbody>
+                </table>    
+            </div>
+        </div>
+    </div>
+{% endblock %}

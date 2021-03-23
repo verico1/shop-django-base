@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% load static %}
+  <head>
+      {% block title %}صفحه اصلی | {{ block.super }}{% endblock title %}
+  </head>
+
+
+    
+  {% block content %}
+ <div class="container mt-3 mb-3">
+        <a href=""><img class="mini_slide" src="{% static 'images/top_gif.jpg' %}" alt=""></a>
+      </div>
+      
+      <div class="top_section">
+        <div class="container box ">
+          <div class="col-12">
+            <h2>جدیدترین محصولات</h2>
+          </div> 
+
+          <div class="col-12 topfilms owl-carousel">
+
+            <div class="film">
+              <a href=""><div class="filmposter">
+                <img src="{% static 'images/post1.jpg' %}" alt="">
+              </div>
+            </a>
+              <div class="filmtitle">
+                <a href=""><h5>The Martian</h5></a>
+                <p>192,000 تومان</p>
+              </div>
+            </div>
+
+            <div class="film">
+              <a href="single.html"><div class="filmposter">
+                <img src="{% static 'images/post2.jpg' %}" alt="">
+              </div>
+            </a>
+              <div class="filmtitle">
+                <a href="single.html"><h5>Doctor Strange</h5></a>
+                <p>150,000 تومان</p>
+              </div>
+            </div>
+
+            <div class="film">
+              <a href=""><div class="filmposter">
+                <img src="{% static 'images/post3.jpg' %}" alt="">
+              </div>
+            </a>
+              <div class="filmtitle">
+                <a href=""><h5>Bad Boys For Life</h5></a>
+                <p>95,000 تومان</p>
+              </div>
+            </div>
+            
+            <div class="film">
+              <a href=""><div class="filmposter">
+                <img src="{% static 'images/post4.jpg' %}" alt="">
+              </div>
+            </a>
+              <div class="filmtitle">
+                <a href=""><h5>The Lion King</h5></a>
+                <p>233,000 تومان</p>
+              </div>
+            </div>
+            
+            <div class="film">
+              <a href=""><div class="filmposter">
+                <img src="{% static 'images/post5.jpg' %}" alt="">
+              </div>
+            </a>
+              <div class="filmtitle">
+                <a href=""><h5>AD Astara</h5></a>
+                <p>425,000 تومان</p>
+              </div>
+            </div>
+
+            <div class="film">
+              <a href=""><div class="filmposter">
+                <img src="{% static 'images/post6.jpg' %}" alt="">
+              </div>
+            </a>
+              <div class="filmtitle">
+                <a href=""><h5>گوشی موبایل شیائومی مدل Redmi Note 9 Prooooooo oooooooo</h5></a>
+                <p>3,250,000 تومان</p>
+              </div>
+            </div>
+
+
+          </div>
+          
+          
+
+        </div>
+        <div class="top_section_overlay"></div>
+    </div>
+
+      <div class="container mt-3 mb-3">
+        <a href=""><img class="mini_slide" src="{% static 'images/topgif.gif' %}" alt=""></a>
+      </div>
+
+      <div class="top_section" id="mini_section">
+        <div class="container box ">
+          <div class="col-10">
+            <h2>جدیدترین محصولات</h2>
+          </div> 
+
+          <div class="col-9 topfilms owl-carousel">
+
+            <div class="film">
+              <a href=""><div class="filmposter">
+                <img src="{% static 'images/post1.jpg' %}" alt="">
+              </div>
+            </a>
+              <div class="filmtitle">
+                <a href=""><h5>The Martian</h5></a>
+                <p>192,000 تومان</p>
+              </div>
+            </div>
+
+            <div class="film">
+              <a href="single.html"><div class="filmposter">
+                <img src="{% static 'images/post2.jpg' %}" alt="">
+              </div>
+            </a>
+              <div class="filmtitle">
+                <a href="single.html"><h5>Doctor Strange</h5></a>
+                <p>150,000 تومان</p>
+              </div>
+            </div>
+
+            <div class="film">
+              <a href=""><div class="filmposter">
+                <img src="{% static 'images/post3.jpg' %}" alt="">
+              </div>
+            </a>
+              <div class="filmtitle">
+                <a href=""><h5>Bad Boys For Life</h5></a>
+                <p>95,000 تومان</p>
+              </div>
+            </div>
+            
+            <div class="film">
+              <a href=""><div class="filmposter">
+                <img src="{% static 'images/post4.jpg' %}" alt="">
+              </div>
+            </a>
+              <div class="filmtitle">
+                <a href=""><h5>The Lion King</h5></a>
+                <p>233,000 تومان</p>
+              </div>
+            </div>
+            
+            <div class="film">
+              <a href=""><div class="filmposter">
+                <img src="{% static 'images/post5.jpg' %}" alt="">
+              </div>
+            </a>
+              <div class="filmtitle">
+                <a href=""><h5>AD Astara</h5></a>
+                <p>425,000 تومان</p>
+              </div>
+            </div>
+
+            <div class="film">
+              <a href=""><div class="filmposter">
+                <img src="{% static 'images/post6.jpg' %}" alt="">
+              </div>
+            </a>
+              <div class="filmtitle">
+                <a href=""><h5>گوشی موبایل شیائومی مدل Redmi Note 9 Prooooooo oooooooo</h5></a>
+                <p>3,250,000 تومان</p>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="mini_banner col-3">
+            <img src="{% static 'images/mini_banner.jpg' %}" alt="">
+          </div>
+
+        </div>
+        <div class="top_section_overlay"></div>
+    </div>
+
+    {% endblock content%}
+
+

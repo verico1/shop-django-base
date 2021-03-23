@@ -1,0 +1,63 @@
+<html>
+    {% extends "base.html" %}
+    {% load static %}
+    {% load jformat %}
+    <head>
+      
+        {% block title %}
+        {{product.product_model}}  | {{ block.super }}
+        {% endblock title %}
+        
+    </head>
+{% block content %}
+<body>
+    <br>
+    <br>
+    <img src="{{product.product_img.url}}" alt="{{product.product_model}}">
+    <h1>{{product.product_model}} مدل :</h1>
+    <p>{{product.product_brand}} برند :</p>
+    <p>{{product.product_screen_size}} اندازه صفحه نمایش :</p>
+    {% if not product.product_status_number == 0 %}
+    <p> قیمت : {{product.product_price}}</p>
+    {% else %}
+    <p>ناموجود</p>
+    {% endif %}
+    <br>
+    <br>
+    <a href="/payment/add-to-cart/{{product.id}}">خرید</a>
+    <br>
+    <br>
+    <br>
+    <h1>کامنت ها</h1>
+    {% if not user.is_authenticated %}
+    <p>لطفا برای ارسال کامنت وارد شوید</p>
+    {% else %}
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="body" id=>
+        <input type="submit">
+    </form>
+    <br>
+    {% endif %}
+    <br>
+    {{message_good}}
+    <br>
+    {% for comment in comments %}
+    <div class="comments" style="padding: 10px;">
+      <p class="font-weight-bold">
+        {{ comment.user }}
+        <span class=" text-muted font-weight-normal">
+          {{ comment.created_on }}
+        </span>
+        <span class=" text-muted font-weight-normal">
+          {{ comment.created_on_time|date:"G:i" }}
+        </span>
+      </p>
+      {{ comment.body | linebreaks }}
+    </div>
+    {% endfor %}
+    <br>
+</body>
+{% endblock %}
+</html>

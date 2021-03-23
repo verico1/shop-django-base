@@ -1,0 +1,124 @@
+{% load static %}
+{% load i18n %}
+
+<html>
+    <head>
+        {% for not in note %}
+        <br>
+        {{not.content}}
+        {% endfor %}
+        <link rel="stylesheet"  href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet"  href="{% static 'css/fontawesome.css' %}">
+        <link rel="stylesheet"  href="{% static 'css/style.css' %}">
+        {% block head %}{% endblock head %}
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+        <title>{% block title %}{% trans "فروشگاه" %}{% endblock title %}</title>
+    </head>
+    
+    <body onload="reco()">
+        <header>
+            <div class="container">
+                <div class="top_Header">
+                    <div class="row">
+                        <div class="col-md-6 left topbar_menuicon">
+                            <div class="col-md-2 left"><a href="/call_us"><p class="gray">تماس با ما <i class="fa fa-align-center orange"></i></p></a></div>
+                            <div class="col-md-2 left"><a href=""><p class="gray">سوالات متداول <i class="fa fa-question orange"></i></p></a></div>
+                            <div class="col-md-3 left"><a href=""><p class="gray">پیگیری سفارشات <i class="fa fa-truck orange"></i></p></a></div>
+                        </div>
+        
+                        <div class="col-md-6 right">
+                            <div class="col-md-9 left">
+                                <p class="gray right"><b class="orange">info@</b>domain.com <i class="fa fa-envelope orange"></i></p> 
+                            </div>
+                            <div class="col-md-3 right">
+                               <p class="gray right"><b class="orange">021-</b>6548321 <i class="fa fa-phone orange"></i></p> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="mid_Header">
+                    <div class="row">
+        
+                        <div class="col-md-4">
+                            <div class="col-md-6 left nav_sicon">
+                                <a href="/payment/order-summary/" class="shopping_bag"><i class="fa fa-shopping-bag"></i></a>
+                                <a href="" class="like_bag"><i class="fa fa-heart"></i></a>
+                            </div>
+                            {% if not user.is_authenticated %}
+                            <div class="right nav_sign_btn">
+                                <a href="/account/register"><button class="btn sign_btn">ورود / عضویت <i class="fa fa-user"></i></button></a>
+                            </div>
+                            {% else %}
+                            <div class="right nav_sign_btn">
+                                <a href="/account/logout"><button class="btn sign_btn">خروج <i class="fa fa-times"></i></button></a>
+                            </div>
+                            <div class="right nav_sign_btn">
+                                <a href="/account/"><button class="btn sign_btn">پروفایل <i class="fa fa-user"></i></button></a>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-5 search_section">
+                            <form action="{% url 'search_view' %}" method="get">
+                                <input type="text" name="search" id="searchbox" placeholder="جستجو..." required>
+                                <button class="search_icon" type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+        
+                        <div class="col-md-3 logo_section">
+                            <h4 class="text_logo">
+                                <a href="/"><strong>عنوان سایت</strong></a>
+                            </h4>
+                            <a href="/"><img src="{% static 'images/logo.png'%}" alt="" class="logo right"></a>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="bot_Header">
+                    <ul>
+                        <li><a href="">کالای دیجیتال</a></li>
+                        <li><a href="/products/">دسته بندی</a></li>
+                        <li><a href="">لپ تاپ</a></li>
+                        <li><a href="/products/mobile/">موبایل</a></li>
+                        <li><a href="">درباره ما</a></li>
+                    </ul>
+                </div>
+        
+        
+            </div>
+        </header>
+
+        {% block content %}{% endblock content %} 
+        <script src = "{% static 'js/main.js' %}"></script>
+        <script src = "{% static 'js/bootstrap.js' %}"></script>
+        <script src = "{% static 'js/fontawesome.js' %}"></script>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <script src="{% static 'js/owl-options.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
+   
+        <footer>
+            <div class="container footer">
+                <div class="col-12">
+                  <div class="footer_logo">
+                    <a class="navbar-brand " href="#"><img class="logo right" src="{% static 'images/logo.png' %}" alt=""></a>
+                  </div>
+                  <div class="copyright">
+                    <p>@کپی رایت 2020 عنوان سایت</p>
+                  </div>
+                  <div class="footer_nav">
+                    <a href="">قوانین</a>
+                    <a href="">تماس با ما</a>
+                    <a href="">پرسش های متداول</a>
+                  </div>
+      
+                </div>
+            </div>
+        </footer>
+    </body>
+<!-- test -->
+    
+</html>

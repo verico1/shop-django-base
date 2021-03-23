@@ -1,0 +1,12 @@
+{% extends 'staff/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} فروشگاه | ایجاد محصول{% endblock %}
+{% block head %} ایجاد محصول {% endblock %}
+{% block main %}
+    <form method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">ارسال</button>
+    </form>
+{% endblock %}

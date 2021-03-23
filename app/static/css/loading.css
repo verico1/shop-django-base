@@ -1,0 +1,176 @@
+/* @font-face {
+    font-family: "open";
+    font-style: normal;
+    font-weight: 300;
+    src: local("Open Sans Light"), local("OpenSans-Light"), url(/fonts/OpenSans-Light.woff) format('woff');
+}
+
+*, *:before, *:after {
+box-sizing: border-box;
+}
+
+@keyframes empty {
+
+0% {
+transform: scale( 3 );
+}
+
+100% {
+transform: scale( 0 );
+}
+
+}
+@keyframes hide {
+0%{
+opacity: 1;
+}
+100%{
+opacity: 0;
+}
+}
+@keyframes shake {
+
+0%, 100% {
+transform: rotate( 0 );
+}
+
+10%, 50%, 90% {
+transform: rotate( 4deg );
+}
+
+30%, 70% {
+transform: rotate( -4deg );
+}
+
+}
+
+@keyframes moveLeft {
+
+100% {
+left: 40%;
+}
+
+}
+
+@keyframes fave {
+
+0% {
+opacity: 0;
+}
+
+100% {
+left: 45%;
+opacity: 1;
+}
+
+}
+
+@keyframes fill {
+
+0% {
+bottom: -100%;
+}
+
+100% {
+bottom: 0%;
+}
+
+}
+
+@keyframes goOut {
+
+100% {
+opacity: 0;
+top: 45%;
+}
+
+}
+
+@keyframes comeIn {
+
+0% {
+opacity: 0;
+top: 55%;
+}
+100% {
+opacity: 1;
+top: 45%;
+}
+
+}
+
+
+a {
+text-decoration: none;
+color: inherit;
+}
+
+#loading {
+position: absolute;
+z-index:9999;
+top: 0;
+margin: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+font-family: open, 'sans-serif', sans;
+background:  #17181b;
+overflow: hidden;
+}
+
+.loading_bg {
+background:#0E6BE4;
+width: 50vw;
+height: 50vw;
+border-radius: 50%;
+top: 50%;
+margin-top: -25vw;
+margin-left: -25vw;
+left: 50%;
+position: absolute;
+animation: empty both 2s linear;
+}
+
+.loading_logo {
+position: absolute;
+top: 50%;
+left: 50%;
+margin-top: -23px;
+margin-left: -23px;
+width: 46px;
+box-shadow: 0 2px 2px#0858DF;
+height: 46px;
+background: #d9d9d9;
+overflow: hidden;
+animation: shake .25s linear 20, moveLeft both .7s ease-in-out 2.5s, goOut forwards .6s ease 5s;
+}
+.loading_logo:before {
+content: '';
+position: absolute;
+width: 100%;
+transform: scale( 1.2 );
+height: 100%;
+background:#0858DF;
+border-radius: 75px 75px 0 0 / 30px 30px 0 0;
+animation: fill both 2s linear;
+}
+.loading_logo:after {
+content: 'SE';
+color: #fff;
+font: 42px tahoma, arial, sans-serif;
+position: absolute;
+right: -2px;
+bottom: -12px;
+}
+
+.Loading_text {
+color: #0858DF;
+text-shadow: 0 1px 0#0858DF;
+font-size: 22px;
+position: absolute;
+left: 55%;
+top: 50%;
+margin-top: -2%;
+animation: fave .7s both ease-in-out 2.8s, goOut forwards .6s ease 5s;
+}
+ */

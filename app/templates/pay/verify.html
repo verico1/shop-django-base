@@ -1,0 +1,12 @@
+<html>
+  {% extends "base.html" %}
+  {% load static %}
+<head>
+      {% block title %}
+      نتیجه پرداخت  | {{ block.super }}
+      {% endblock title %}
+</head>
+
+{% block content %}
+<p>{{message_bad}}</p>
+{% endblock %}

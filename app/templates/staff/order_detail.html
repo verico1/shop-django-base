@@ -1,0 +1,15 @@
+{% extends 'staff/base.html' %}
+{% block title %} فروشگاه | سفارش {% endblock %}
+{% block head %} سفارش {{order.ref_code}}{% endblock %}
+
+{% block main %}
+    <p>{{order.owner}}</p>
+    <p>{{order.is_ordered}}</p>
+    {% for item in order.get_cart_items %}
+        <p>{{item.product.product_model}}</p>
+        <p>تعداد سفارش : {{item.quantity}}</p>
+        <p>{{item.date_added}}-----{{item.date_ordered}}</p>
+    {% endfor %}    
+    <p>{{order.date_ordered}} | {{order.created_on_time|date:"G:i"}}</p>
+    {{order.get_cart_total}} جمع قیمت
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+<head>
+    {% block title %}
+    تایید ایمیل  | {{ block.super }}
+    {% endblock title %}
+
+</head>
+
+<body>
+  {% block content %}
+  <link rel="stylesheet"  href="{% static 'css/register.css' %}">
+  <div class="verification">
+    <form method="POST" style="text-align: center;" id="verification">
+      {% csrf_token %}
+      {% if message_good %}
+      <h4 class="msg_good msg">{{message_good}}</h4>
+      {% else %}
+      {% endif %}
+      {% if message_bad %}
+      <h4 class="msg_bad msg">{{message_bad}}</h4>
+      {% else %}
+      {% endif %}
+      <h3>کد تائید ایمیل خود را وارد کنید</h3>
+      <input type="text" name="email_activation" maxlength='6' value='' id="verification-code" onkeyup="check()">
+
+      <button type="submit" class="submit_btn">تایید</button>
+
+    </form>
+  </div>
+<script src="{% static 'js/main.js'%}"></script>
+  {% endblock %}
+</body>

@@ -1,0 +1,20 @@
+<html>
+  {% extends "base.html" %}
+  {% load static %}
+  <head>
+    
+      {% block title %}
+      جستجو  | {{ block.super }}
+      {% endblock title %}
+      
+  </head>
+
+  {% block content %}
+  <p>جستجو</p>
+  <ul>
+    {% for product in products %}
+    <a href="/products/{{product.product_category|lower}}/{{product.product_url}}"><p>{{product.product_model}}</p></a>
+    <br>
+    {% endfor %}
+  </ul>
+  {% endblock %}

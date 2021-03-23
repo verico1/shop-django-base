@@ -1,0 +1,72 @@
+<html>
+    {% extends "base.html" %}
+    {% load static %}
+<head>
+    {% block head %}
+    <link rel="stylesheet"  href="{% static 'css/contactus.css' %}">
+    {% endblock head %}
+    
+    {% block title %}
+    تماس با ما | {{ block.super }}
+    {% endblock title %}
+    
+</head>
+{% block content %}
+
+    <div class="bg-contact100" style='background-image: url("{% static 'images/bg-contactus.jpg' %}");'>
+      <div class="container-contact100">
+        <div class="wrap-contact100">
+          <div class="contact100-pic js-tilt" data-tilt>
+            <img src="{% static 'images/img-contactus.png' %}" alt="IMG">
+          </div>
+          <form class="contact100-form validate-form" method="POST">
+            {% csrf_token %}
+                        {% if message_good %}
+                        <h4 class="msg_good msg mb-5">{{message_good}}</h4>
+                        {% else %}
+                        {% endif %}
+                        {% if message_bad %}
+                        <h4 class="msg_bad msg mb-5">{{message_bad}}</h4>
+                        {% else %}
+                        {% endif %}
+            <span class="contact100-form-title">
+              تماس با ما
+            </span>
+    
+            <div class="wrap-input100 validate-input" >
+              <input class="input100" type="text" name="name" placeholder="نام و نام خانوادگی" required oninvalid="this.setCustomValidity('نام و نام خانوادگی ضروری است')" oninput="setCustomValidity('')">
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </span>
+            </div>
+    
+            <div class="wrap-input100 validate-input">
+              <input class="input100" type="email" name="email" value="{{email}}" placeholder="ایمیل" required oninvalid="this.setCustomValidity('ایمیل وارد شده صحیح نمیباشد')" oninput="setCustomValidity('ایمیل را با @ وارد کنید')" onchange="setCustomValidity('')">
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </span>
+            </div>
+    
+            <div class="wrap-input100 validate-input">
+              <textarea class="input100" name="content" placeholder="متن پیام" required  oninvalid="this.setCustomValidity('متن پیام ضروری است')" oninput="setCustomValidity('')"></textarea>
+              <span class="focus-input100"></span>
+            </div>
+
+            <br>
+            <script src='https://www.google.com/recaptcha/api.js'></script>
+            <div class="g-recaptcha recaptcha" data-sitekey="6LfZDhoaAAAAANnPAbVTa4LaKyxl8ycq8wOi8kFw"></div>
+            <br>  
+    
+            <div class="container-contact100-form-btn">
+              <button class="contact100-form-btn" type="submit">
+                ارسال
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+</html>

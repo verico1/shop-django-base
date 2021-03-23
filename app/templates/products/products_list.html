@@ -1,0 +1,32 @@
+<html>
+    {% extends "base.html" %}
+    {% load static %}
+    <head>
+      
+        {% block title %}
+        محصولات  | {{ block.super }}
+        {% endblock title %}
+        
+    </head>
+    {% block content %}
+<body>
+    <br>
+    <br>
+    {% for cat in category.products.all %}
+    <br>
+    <img src="{{cat.product_img.url}}" alt="{{cat.product_model}}">
+    <a href="{{cat.product_url}}/"><h1> مدل : {{cat.product_model}}</h1></a>
+    <p> برند : {{cat.product_brand}}</p>
+    <p> اندازه صفحه نمایش : {{cat.product_screen_size}}</p>
+    {% if not cat.product_status_number == 0 %}
+    <p> قیمت : {{cat.product_price}}</p>
+    {% else %}
+    <p>ناموجود</p>
+    {% endif %}
+    <br>
+    <br>
+    {% endfor %}
+    <br>
+</body>
+{% endblock %}
+</html>

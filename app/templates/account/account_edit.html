@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+<head>
+    {% block head %}
+    <link rel="stylesheet"  href="{% static 'css/register.css' %}">
+    {% endblock head %}
+    {% block title %}
+    ویرایش حساب کاربری  | {{ block.super }}
+    {% endblock title %}
+</head>
+{% block content %}
+<div class="signup_main">
+    <section class="signup">
+        <div class="singup_form">
+            <div class="signup-content">
+                <div class="signup-form">
+                      {% if message_good %}
+                      <h4 class="msg_good msg">{{message_good}}</h4>
+                      {% else %}
+                      {% endif %}
+                      {% if message_bad %}
+                      <h4 class="msg_bad msg">{{message_bad}}</h4>
+                      {% else %}
+                      {% endif %}
+                    <h2 class="form-title">ویرایش حساب کاربری</h2>
+                    <form method="POST" class="register-form" id="register-form">
+                      {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name"><i class="fa fa-user" aria-hidden="true"></i></label>
+                            <input type="text" value="{{ user.username | default_if_none:""   }}" name="username" id="name" placeholder="نام کاربری"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="name"><i class="fa fa-user" aria-hidden="true"></i></label>
+                            <input type="text" value="{{ user.email | default_if_none:""   }}" name="email" id="name" placeholder="ایمیل"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="name"><i class="fa fa-user" aria-hidden="true"></i></label>
+                            <input type="text" value="{{ user.profile.first_name | default_if_none:""   }}" name="first_name" id="name" placeholder="نام"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="name"><i class="fa fa-user" aria-hidden="true"></i></label>
+                            <input type="text" value="{{ user.profile.last_name | default_if_none:""   }}" name="last_name" id="name" placeholder="نام خانوادگی"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="name"><i class="fa fa-user" aria-hidden="true"></i></label>
+                            <input type="number" value="{{ user.profile.phone_number | default_if_none:""   }}" name="phone_number" id="name" placeholder="شماره موبایل" />
+                        </div>
+                        <div class="form-group">
+                            <label for="name">جنسیت</label>
+                            <br>
+                            <br>
+                                {% if user.profile.gender == "" %}
+                                <select name="gender" id="gender">  
+                                    <option value="" >---</option>
+                                    <option value="M">مرد</option>
+                                    <option value="F">زن</option>
+                                </select>
+                                {% endif %}
+                                {% if user.profile.gender == "M" %}
+                                <select name="gender" id="gender"> 
+                                    <option value="M">مرد</option>
+                                    <option value="F">زن</option>
+                                    <option value="" >---</option>
+                                </select>
+                                {% endif %}
+                                {% if user.profile.gender == "F" %}
+                                <select name="gender" id="gender"> 
+                                    <option value="F">زن</option>
+                                    <option value="M">مرد</option>
+                                    <option value="" >---</option>
+                                </select>
+                                {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="name"><i class="fa fa-user" aria-hidden="true"></i></label>
+                            <input type="text" value="{{ user.profile.location | default_if_none:""   }}" name="location" id="lo" placeholder="آدرس"/>
+                        </div>
+                        {% if user.profile.profile_img %}
+                        <img src="{{user.profile.profile_img.url}}" alt="{{user.profile.first_name}}">
+                        {% endif %}
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="ذخیره"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+  </div>
+{% endblock content %}

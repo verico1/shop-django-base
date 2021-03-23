@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+<head>
+    {% block title %}
+    {{product.product_model}} سبدخرید | {{ block.super }}
+    {% endblock title %} 
+</head>
+
+{% block content %}
+ <section>
+   <div class="row">
+    <table class="table table-hover table-bordered text-center">
+      <tr class="text-center">
+        <th>تعداد</th>
+        <th>محصول</th>
+        <th>قیمت</th>
+      </tr>
+      {% for item in order.get_cart_items %}
+        <tr>
+          <td>{{ item.quantity }}</td>
+          <td>
+            {{ item.product.product_model }}
+            <span class="pull-right">
+              <a href="/payment/item/delete/{{item.id}}" data-balloon="remove this item from cart" class="text-danger" onclick="return confirm_delete();">
+              <i class="fas fa-trash"></i>
+              </a>
+              <a href="/payment/item/add/{{item.id}}" data-balloon="remove this item from cart" class="text-danger" onclick="return confirm_delete();">
+                <i class="fas fa-trash"></i>
+              </a>
+              <a href="/payment/item/red/{{item.id}}" data-balloon="remove this item from cart" class="text-danger" onclick="return confirm_delete();">
+                  <i class="fas fa-trash"></i>
+              </a>
+            </span>
+          </td>
+          <td>{{ item.product.product_price }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan= 3> سبد شما خالی می باشد</td>
+        </tr>
+      {% endfor %}
+      <tr>
+        {% if order.get_cart_total != None %}
+        <td colspan=2>
+          <strong class="pull-right">کل قیمت:</strong>
+        </td>
+        
+        <td colspan= 1>
+          $<strong>{{ order.get_cart_total }}</strong>
+        </td>
+        {% endif %}
+      </tr>
+      <tr>
+        <td colspan=1 >
+          <a href="/products/" class="btn btn-warning pull-left">
+            {% if order %}ادامه دادن خرید{% else %}اضافه کردن محصول به سبدخرید{% endif %}
+          </a> 
+        </td>
+        <td colspan=2>
+          {% if order.get_cart_items %}
+            <a href="/payment/checkout/" class="pull-right btn btn-primary">پرداخت</a>
+          {% endif %}
+        </td>
+      </tr>
+    </table>
+   </div>
+   <br>
+   <br>
+ </section>
+{% endblock %}

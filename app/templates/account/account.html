@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+<html>
+<head>
+    {% block title %}
+    پروفایل  | {{ block.super }}
+    {% endblock title %}
+</head>
+{% block content %}
+    <br>
+    {% if username.profile.first_name == "" %}
+    <p>کاربر عزیز خوش آمدید</p>
+    <p>برای استفاده بهتر از وبسایت لطفا پروفایل را کامل کنید</p>
+    <a href="{% url 'edit' %}">تکمیل پروفایل</a>
+    {% else %}
+    <p>{{ username.profile.first_name | default_if_none:"" }} عزیز خوش آمدید</p>
+    {% endif %}
+    <p>نام کاربری شما : {{ username.profile.user | default_if_none:""  }} </p>
+    <p>ایمیل : {{ username.email | default_if_none:""  }} </p>
+    <p>نام فامیلی شما : {{ username.profile.last_name | default_if_none:""  }} </p>
+    <p> شماره موبایل : {{ username.profile.phone_number | default_if_none:""  }} </p>
+    {% if username.profile.gender == "M" %}
+        <p>جنسیت : مرد</p>
+    {% else %}
+        <p> جنسیت : زن</p>    
+    {% endif %}    
+    <p>آدرس : {{ username.profile.location | default_if_none:""  }} </p>
+    {% if username.profile.profile_img %}
+        <img src="{{username.profile.profile_img.url}}" alt="{{username.profile.first_name}}">
+    {% endif %}
+    <br>
+    <a href="{% url 'edit' %}">ویرایش پروفایل</a>
+    <br>
+    <a href="{% url 'password_works' %}">تغییر کلمه عبور</a>
+{% endblock %}
+</html>
